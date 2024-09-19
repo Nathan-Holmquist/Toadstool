@@ -1,13 +1,14 @@
 ﻿<Properties StartupConfiguration="{672F32EA-8110-3947-9D42-5474012D177C}|">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/PlayerMovement.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/CameraBehavier.cs">
     <Files>
-      <File FileName="Assets/PlayerMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets/PlayerMovement.cs" Line="31" Column="1" />
+      <File FileName="Assets/CameraBehavier.cs" Line="11" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Toadstool">
+          <Node name="Toadstool" expanded="True">
             <Node name="Assets" expanded="True" />
           </Node>
         </State>
