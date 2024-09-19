@@ -199,3 +199,5 @@ Start importing Assets/Scenes/SampleScene.unity using Guid(9fc0d4010bbf28b459407
  -> (artifact id: 'b6355319a0fba6d4530fb0f5c67966fd') in 0.036355 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 1
+TcpMessagingSession - receive error
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
