@@ -6,12 +6,6 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f; // You can adjust this in the Inspector
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        // You can initialize things here if needed
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -22,10 +16,16 @@ public class PlayerMovement : MonoBehaviour
         // Create movement vector
         Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
 
-        // Apply movement to the capsule
+        // Normalize the movement vector to ensure consistent speed
+        if (movement.magnitude > 1)
+        {
+            movement.Normalize();
+        }
+
+        // Apply movement to the player
         transform.Translate(movement * speed * Time.deltaTime, Space.World);
 
-        // Keep the capsule upright (locks X and Z rotation)
+        // Keep the player upright (locks X and Z rotation)
         transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
     }
 }
