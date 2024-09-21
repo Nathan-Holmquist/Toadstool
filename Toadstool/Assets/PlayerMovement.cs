@@ -28,5 +28,5 @@ public class PlayerMovement : MonoBehaviour
         // Keep the capsule upright (locks X and Z rotation)
         transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
     }
-
+    //penis
 }
