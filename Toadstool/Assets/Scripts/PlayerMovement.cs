@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public string balls = "dicknballs";
     public float speed = 5f; // You can adjust this in the Inspector
     public Rigidbody Rigidbody;
     public float jumpAmount = 5f;
