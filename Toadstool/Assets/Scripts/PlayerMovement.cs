@@ -6,11 +6,14 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f; // You can adjust this in the Inspector
     public Rigidbody Rigidbody;
-    public float jumpAmount = 10;
+    public float jumpAmount = 5f;
+    private bool isGrounded = false;
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        // Jump
+        if (Input.GetKeyDown(KeyCode.Space) && (isGrounded) )
         {
             Rigidbody.AddForce(Vector3.up * jumpAmount, ForceMode.Impulse);
         }
@@ -33,4 +36,29 @@ public class PlayerMovement : MonoBehaviour
         // Keep the player upright (locks X and Z rotation)
         transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
     }
+    
+
+    // CUSTOM FUNCTIONS
+
+    // Chekcs when the player enters a object
+    void OnCollisionEnter(Collision collision) 
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            isGrounded = true;
+        }
+        GameObject Floor = collision.gameObject;
+        Debug.Log("Collided with: " + Floor);
+    }
+
+    // Checks when the player exits a object
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            isGrounded = false;
+        }
+        
+    }
+
 }
