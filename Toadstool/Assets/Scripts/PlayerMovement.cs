@@ -5,10 +5,15 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f; // You can adjust this in the Inspector
-
+    public Rigidbody Rigidbody;
+    public float jumpAmount = 10;
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Rigidbody.AddForce(Vector3.up * jumpAmount, ForceMode.Impulse);
+        }
         // Get input from WASD or arrow keys
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
