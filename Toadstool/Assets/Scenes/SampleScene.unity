@@ -879,7 +879,7 @@ Transform:
   m_GameObject: {fileID: 1114910565}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 2.94, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1034,7 +1034,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1fc7680fd96d144386d346ec3b3c569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  balls: dicknballs
   speed: 5
   Rigidbody: {fileID: 1150720032}
   jumpAmount: 10
