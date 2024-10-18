@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Toadstool.sln"
+    "dotnet.defaultSolution": "Toadstool.sln",
+    "dotnet.preferCSharpExtension": true
 }
