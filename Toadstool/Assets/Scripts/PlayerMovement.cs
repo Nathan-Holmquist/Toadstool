@@ -11,15 +11,20 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
     public Transform cam;
 
-    public float speed = 5f;
-    public float gravity = -20f;
-    public float jump = 5f;
+    public float runSpeed = 8f;
+    public float sprintSpeed = 12f;
+    public float dashSpeed = 18f;
+    public float gravity = -50f;
+    public float jump = 1.8f;
+
+    public float dashDuration = 0.25f;
+    private float dashTimer;
 
     public float turnSmoothTime = 0.2f;
     public float directionSmoothTime = 0.2f;
 
     public Transform groundCheck;
-    public float groundDistance = 0.2f;
+    public float groundDistance = 0.4f;
     public LayerMask groundMask;
 
     private float turnSmoothVelocity;
@@ -29,6 +34,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 velocity;
 
     private bool isGrounded;
+    private bool isDashing;
+    private bool isRunning;
+
 
     void Update()
     {
@@ -52,7 +60,9 @@ public class PlayerMovement : MonoBehaviour
             Vector3 targetDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             currentDirection = Vector3.SmoothDamp(currentDirection, targetDirection, ref directionVelocity, directionSmoothTime);
 
-            controller.Move(currentDirection.normalized * speed * Time.deltaTime);
+            DashAndRun();
+
+            controller.Move(currentDirection.normalized * runSpeed * Time.deltaTime);
         }
         
         if(Input.GetButtonDown("Jump")&& isGrounded){
@@ -62,5 +72,33 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+    }
+
+
+    void DashAndRun(){
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing && isGrounded){
+            isDashing = true;
+            dashTimer = dashDuration;
+            runSpeed = dashSpeed;
+        }
+
+        if (isDashing){
+            dashTimer -= Time.deltaTime;
+
+            if (dashTimer <= 0f){
+                isDashing = false;
+                isRunning = true;
+                runSpeed = sprintSpeed;
+            }
+        }  
+        else if (Input.GetKey(KeyCode.LeftShift) && isRunning){
+            runSpeed = sprintSpeed;
+        }
+         else if (Input.GetKeyUp(KeyCode.LeftShift)){
+            isDashing = false;
+            isRunning = false;
+            runSpeed = 8f;
+        }
+
     }
 }
