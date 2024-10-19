@@ -87,8 +87,14 @@ public class PlayerMovement : MonoBehaviour
 
             if (dashTimer <= 0f){
                 isDashing = false;
+                if (Input.GetKey(KeyCode.LeftShift)){
                 isRunning = true;
                 runSpeed = sprintSpeed;
+                }
+                else{
+                isRunning = false;
+                runSpeed = 8f;
+                }
             }
         }  
         else if (Input.GetKey(KeyCode.LeftShift) && isRunning){
