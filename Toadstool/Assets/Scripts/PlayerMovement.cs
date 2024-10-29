@@ -29,19 +29,23 @@ public class PlayerMovement : MonoBehaviour
 
     private float turnSmoothVelocity;
 
+    
     private Vector3 currentDirection;
     private Vector3 directionVelocity;
     private Vector3 velocity;
 
+    // obvious
     private bool isGrounded;
     private bool isDashing;
     private bool isRunning;
 
-
+    // runs every frame
     void Update()
     {
+        // obvious : Check's if player is on the ground
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
+        // who tf knows ¯\_(ツ)_/¯ 
         if (isGrounded && velocity.y < 0){
             velocity.y = -2f;
         }
@@ -49,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+
 
         if (direction.magnitude >= 0.1f){
 
@@ -74,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
-
+    // Dash 
     void DashAndRun(){
         if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing && isGrounded){
             isDashing = true;
