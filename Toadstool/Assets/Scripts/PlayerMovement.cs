@@ -35,9 +35,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 velocity;
 
     // obvious
-    private bool isGrounded;
-    private bool isDashing;
-    private bool isRunning;
+    public static bool isGrounded;
+    public static bool isDashing;
+    public static bool isRunning;
 
     // runs every frame
     void Update()
@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-
+        // idk
         if (direction.magnitude >= 0.1f){
 
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
