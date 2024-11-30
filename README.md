@@ -1,2 +1,2 @@
 # Toadstool
-ME CONRAD GAME FUN FUN FUN FUN FUN FUN FUN
+Unity Game being developed by Nathan Holmquist and Conrad Cliff. 
